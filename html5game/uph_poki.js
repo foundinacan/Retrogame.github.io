@@ -15,7 +15,8 @@ function poki_script_closure_raw(self, other, script, custom) {
 }
 
 function poki_is_blocked() {
-    return !window.PokiSDK_OK;
+    // Ads are intentionally disabled.
+    return false;
 }
 
 function poki_gameplay_start() {
@@ -32,16 +33,14 @@ function poki_happy_time(magnitude) {
 
 ///~
 function poki_commercial_break_raw(fn) {
-    if (PokiSDK) {
-        PokiSDK.commercialBreak().then(function() { fn(true); });
-    } else setTimeout(function() { fn(false); }, 0);
+    // Skip commercial ads and immediately let gameplay continue.
+    if (typeof fn === "function") setTimeout(function() { fn(true); }, 0);
 }
 
 ///~
 function poki_rewarded_break_raw(fn) {
-    if (PokiSDK) {
-        PokiSDK.rewardedBreak().then(fn);
-    } else setTimeout(function() { fn(false); }, 0);
+    // No rewarded ads are shown, so no reward is granted.
+    if (typeof fn === "function") setTimeout(function() { fn(false); }, 0);
 }
 
 /// https://yal.cc/gamemaker-html5-loading-bar-extended/
