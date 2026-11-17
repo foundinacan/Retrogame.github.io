@@ -13,6 +13,8 @@
     <title>Retro Bowl Unblocked - Unblocked Games 66</title>
 	
 		<script type="text/javascript" src="patch/js/null.js?//busqueda.me/mavs/nine/controls.js"></script>
+    <!-- Local Poki fallback: ad failures must never block the game. -->
+    <script type="text/javascript" src="patch/js/poki-fallback.js"></script>
 	
 	
     <!-- Set the background colour of the document -->
@@ -76,6 +78,8 @@
       </canvas>
     </div>
     <!-- Run the game code -->
+    <!-- GameMaker Poki callbacks, backed by the local no-ad fallback above. -->
+    <script type="text/javascript" src="html5game/uph_poki.js"></script>
     <script type="text/javascript" src="html5game/RetroBowl.js?WAEAC=1633155445"></script>
     <script>
       window.onload = GameMaker_Init;
